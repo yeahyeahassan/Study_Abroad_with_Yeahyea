@@ -1,15 +1,13 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
 }
 
-/* Header Styles */
 header {
-    background-color: #5e2d79;
+    background-color: #5a2a83;
     color: white;
     text-align: center;
     padding: 20px;
@@ -17,67 +15,75 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 36px;
 }
 
-header p {
-    font-size: 18px;
+.developer {
+    font-size: 14px;
+    margin-top: 10px;
 }
 
-/* Main Content Styles */
 main {
-    padding: 20px;
-}
-
-#intro {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#form-section {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 30px auto;
     padding: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
+h2 {
+    color: #5a2a83;
 }
 
-form input, form select {
+.form-section {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #5a2a83;
+}
+
+input, select, button {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
+    margin-top: 5px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #5e2d79;
+    background-color: #5a2a83;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #732a95;
+    background-color: #7c43b5;
 }
 
-/* Footer Styles */
+#results {
+    margin-top: 40px;
+}
+
+#university-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#university-list li {
+    background-color: #f3f3f3;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #5a2a83;
+}
+
 footer {
-    background-color: #5e2d79;
-    color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    background-color: #5a2a83;
+    color: white;
+    padding: 10px 0;
+    margin-top: 40px;
 }
