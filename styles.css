@@ -1,67 +1,88 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+/* General Styling */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f5;
+    color: #333;
 }
 
 header {
-    background-color: #5a2a83;
+    background-color: #7b2cbf;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
+    position: relative;
 }
 
 header h1 {
-    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
 }
 
 .developer {
-    font-size: 14px;
+    font-size: 1rem;
     margin-top: 10px;
+    opacity: 0.8;
 }
 
 main {
-    max-width: 800px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 50px auto;
     padding: 20px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 h2 {
-    color: #5a2a83;
-}
-
-.form-section {
-    margin-bottom: 30px;
+    color: #7b2cbf;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-top: 15px;
-    color: #5a2a83;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #5e2879;
 }
 
-input, select, button {
+input, select {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #7b2cbf;
+    box-shadow: 0 0 8px rgba(123, 44, 191, 0.3);
 }
 
 button {
-    background-color: #5a2a83;
+    width: 100%;
+    padding: 15px;
+    background-color: #7b2cbf;
     color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 button:hover {
-    background-color: #7c43b5;
+    background-color: #6a1bb0;
 }
 
 #results {
@@ -69,21 +90,40 @@ button:hover {
 }
 
 #university-list {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
 }
 
 #university-list li {
-    background-color: #f3f3f3;
-    padding: 15px;
-    margin: 10px 0;
-    border-left: 4px solid #5a2a83;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-left: 4px solid #7b2cbf;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+#university-list li strong {
+    font-size: 1.2rem;
+    color: #5e2879;
+}
+
+#university-list li a {
+    color: #7b2cbf;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#university-list li p {
+    margin-top: 10px;
+    color: #333;
 }
 
 footer {
     text-align: center;
-    background-color: #5a2a83;
+    background-color: #7b2cbf;
     color: white;
-    padding: 10px 0;
+    padding: 15px 0;
     margin-top: 40px;
+    border-top: 4px solid #582a8f;
+    position: relative;
 }
