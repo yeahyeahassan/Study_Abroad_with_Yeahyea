@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Study Abroad with Yeahyea</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -17,6 +18,9 @@
         <section class="form-section">
             <h2>Find Your University</h2>
             <form id="student-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
                 <label for="degree">Highest Degree:</label>
                 <select id="degree" name="degree">
                     <option value="hsc">High School Certificate (HSC)</option>
@@ -44,7 +48,7 @@
         </section>
 
         <section id="results">
-            <h2>Recommended Universities</h2>
+            <h2>Recommended Universities for <span id="user-name"></span></h2>
             <ul id="university-list">
                 <!-- University results will appear here -->
             </ul>
