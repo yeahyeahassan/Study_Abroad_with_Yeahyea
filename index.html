@@ -1,57 +1,432 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Abroad with Yeahyea</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Study Abroad with Yeahyea</h1>
-        <p class="developer">by <span>@yeahyeahassan</span></p>
-    </header>
 
-    <section class="form-section">
-        <form id="student-form">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#F7F6F2;--white:#FFFFFF;--navy:#0F2044;--navy2:#1A3260;--blue:#1E5FA8;--blue-l:#EBF2FB;--teal:#0E7C62;--teal-l:#E4F5F0;--gold:#B8860B;--gold-l:#FDF6E3;--red:#C0392B;--red-l:#FDECEA;--border:#E0DCd4;--mid:#6B6A65;--soft:#F2F0EA;--success:#1B7B4B;--success-l:#E6F4EC;--warn:#92600A;--warn-l:#FEF3DC;
+}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--navy);min-height:100vh}
 
-            <label for="degree">Highest Degree:</label>
-            <select id="degree">
-                <option value="hsc">HSC</option>
-                <option value="bachelors">Bachelors</option>
-                <option value="masters">Masters</option>
-            </select>
+.site-header{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{width:38px;height:38px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;letter-spacing:-0.5px}
+.brand-name{font-size:16px;font-weight:700;color:var(--navy);letter-spacing:-0.3px}
+.brand-name span{color:var(--blue)}
+.ai-pill{font-size:11px;font-weight:600;background:var(--blue-l);color:#0C447C;padding:4px 11px;border-radius:20px;border:1px solid #B5D4F4}
 
-            <label for="cgpa">Your CGPA/GPA:</label>
-            <input type="number" step="0.01" id="cgpa" placeholder="Enter your CGPA/GPA" required>
+.hero{background:var(--navy);padding:2.5rem 1.5rem 2rem;color:#fff}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#85B7EB;margin-bottom:0.5rem}
+.hero h1{font-family:'Lora',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:600;line-height:1.2;color:#fff;max-width:480px}
+.hero h1 em{font-style:italic;color:#85B7EB}
+.hero-desc{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin-top:0.5rem;max-width:420px}
+.dept-badges{display:flex;gap:8px;flex-wrap:wrap}
+.dept-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.08)}
+.dept-badge.eee{background:rgba(30,95,168,0.35);border-color:#378ADD;color:#B5D4F4}
+.dept-badge.cse{background:rgba(14,124,98,0.35);border-color:#1D9E75;color:#9FE1CB}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.h-stat{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem}
+.h-stat-num{font-size:20px;font-weight:700;color:#fff}
+.h-stat-label{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px}
 
-            <label for="ielts">IELTS Score:</label>
-            <input type="number" step="0.1" id="ielts" placeholder="Enter your IELTS score" required>
+.main-wrap{max-width:900px;margin:0 auto;padding:2rem 1.25rem}
 
-            <label for="country">Select Your Preferred Country:</label>
-            <select id="country">
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="canada">Canada</option>
-                <option value="australia">Australia</option>
-                <option value="germany">Germany</option>
-            </select>
+.filter-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.filter-title{font-size:13px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:1rem}
+.filter-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.filter-row.two{grid-template-columns:1fr 1fr}
+.filter-row.five{grid-template-columns:repeat(5,1fr)}
+.filter-row.four{grid-template-columns:repeat(4,1fr)}
+.f-field{display:flex;flex-direction:column;gap:5px}
+.f-label{font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.06em}
+.f-field input,.f-field select{height:40px;border:1.5px solid var(--border);border-radius:9px;padding:0 12px;font-family:'Sora',sans-serif;font-size:13px;color:var(--navy);background:var(--white);outline:none;transition:border-color 0.2s;-webkit-appearance:none}
+.f-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%236B6A65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px}
+.f-field input:focus,.f-field select:focus{border-color:var(--blue)}
 
-            <button type="submit" class="submit-btn">Find Universities</button>
-        </form>
-    </section>
+.toggle-group{display:flex;gap:6px;flex-wrap:wrap}
+.tog{border:1.5px solid var(--border);border-radius:8px;padding:6px 13px;font-size:12px;font-weight:500;cursor:pointer;background:var(--white);color:var(--mid);transition:all 0.18s;font-family:'Sora',sans-serif}
+.tog:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
+.tog.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tog.on.teal{background:var(--teal);border-color:var(--teal)}
+.tog.on.blue{background:var(--blue);border-color:var(--blue)}
 
-    <section class="results-section">
-        <h2>Universities matching your criteria, <span id="user-name"></span>:</h2>
-        <ul id="university-list" class="university-list"></ul>
-    </section>
+.search-btn{width:100%;height:46px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.75rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.search-btn:hover{background:var(--navy2);transform:translateY(-1px)}
+.search-btn:disabled{background:#8A9AB8;cursor:not-allowed;transform:none}
 
-    <footer>
-        <p>© 2024 Study Abroad with Yeahyea. All rights reserved.</p>
-    </footer>
+.results-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
+.res-title{font-size:16px;font-weight:600;color:var(--navy)}
+.res-sub{font-size:12px;color:var(--mid)}
+.sort-sel{height:34px;border:1px solid var(--border);border-radius:8px;padding:0 28px 0 10px;font-family:'Sora',sans-serif;font-size:12px;color:var(--navy);background:var(--white);outline:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%236B6A65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.uni-card{background:var(--white);border:1px solid var(--border);border-radius:14px;margin-bottom:1rem;overflow:hidden;transition:border-color 0.2s}
+.uni-card:hover{border-color:#85B7EB}
+.card-header{padding:1rem 1.25rem 0.75rem;display:flex;gap:12px;align-items:flex-start}
+.flag-box{width:40px;height:40px;border-radius:9px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.uni-meta{flex:1;min-width:0}
+.uni-name{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px;line-height:1.3}
+.uni-loc{font-size:12px;color:var(--mid)}
+.card-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.b-elig-yes{background:var(--success-l);color:#0F5132}
+.b-elig-check{background:var(--warn-l);color:var(--warn)}
+.b-elig-no{background:var(--red-l);color:var(--red)}
+.b-funded{background:var(--teal-l);color:#085041}
+.b-partial{background:var(--gold-l);color:#633806}
+.b-dept{background:var(--blue-l);color:#0C447C}
+.b-level{background:var(--soft);color:var(--navy);border:1px solid var(--border)}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--border)}
+.cg-item{padding:10px 14px;border-right:1px solid var(--border)}
+.cg-item:last-child{border-right:none}
+.cg-key{font-size:11px;color:var(--mid);margin-bottom:3px}
+.cg-val{font-size:13px;font-weight:500;color:var(--navy)}
+
+.intakes-row{padding:8px 14px;background:var(--soft);border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.intakes-label{font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.05em}
+.intake-chip{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;background:var(--navy);color:#fff}
+
+.reqs-row{padding:10px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.req-pill{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:500;background:var(--soft);color:var(--navy);border:1px solid var(--border)}
+.req-pill.meet{background:var(--success-l);color:#0F5132;border-color:#9DD9B6}
+.req-pill.short{background:var(--warn-l);color:var(--warn);border-color:#F0C97A}
+.req-pill.fail{background:var(--red-l);color:var(--red);border-color:#F09595}
+
+.card-foot{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.scholarship-note{font-size:12px;color:var(--teal);font-weight:500}
+.card-actions{display:flex;gap:8px}
+.btn-visit{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--blue);color:#fff;border:none;cursor:pointer;font-family:'Sora',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn-ask{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--soft);color:var(--navy);border:1px solid var(--border);cursor:pointer;font-family:'Sora',sans-serif}
+.btn-ask:hover{background:var(--blue-l);border-color:#85B7EB;color:var(--blue)}
+
+.spinner-wrap{text-align:center;padding:3rem}
+.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:rot 0.75s linear infinite;margin:0 auto 1rem}
+@keyframes rot{to{transform:rotate(360deg)}}
+.spin-txt{font-size:14px;color:var(--mid)}
+
+.ai-disclaimer{background:var(--gold-l);border:1px solid #F0C97A;border-radius:10px;padding:10px 14px;font-size:12px;color:#633806;margin-bottom:1rem;display:flex;gap:8px}
+.empty-state{text-align:center;padding:3rem;color:var(--mid);font-size:14px}
+.err-box{background:var(--red-l);border:1px solid #F09595;border-radius:10px;padding:10px 14px;font-size:13px;color:var(--red);margin-bottom:1rem}
+
+.elig-summary{background:var(--navy);border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
+.es-left h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.es-left p{font-size:12px;color:rgba(255,255,255,0.6)}
+.es-chips{display:flex;gap:8px;flex-wrap:wrap}
+.es-chip{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(255,255,255,0.12);color:#fff}
+
+@media(max-width:600px){
+.filter-row{grid-template-columns:1fr 1fr}
+.filter-row.five{grid-template-columns:repeat(3,1fr)}
+.filter-row.four{grid-template-columns:repeat(2,1fr)}
+.hero-stats{grid-template-columns:repeat(2,1fr)}
+.card-grid{grid-template-columns:1fr 1fr}
+.cg-item:nth-child(2){border-right:none}
+.hero h1{font-size:1.4rem}
+}
+</style>
+
+<h2 class="sr-only">EEE & CSE Global University Finder — AI-powered eligibility and intake checker for international students</h2>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-icon">Y✦</div>
+    <div class="brand-name">Tech<span>Abroad</span></div>
+  </div>
+  <div class="ai-pill"><i class="ti ti-cpu" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> EEE & CSE Portal</div>
+</header>
+
+<section class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="hero-label">Global University Finder</div>
+      <h1>Study <em>Engineering & Computing</em><br>Abroad — Find Your Match</h1>
+      <div class="hero-desc">Real public universities across 7 countries. Instant eligibility check, intake windows, and scholarship status — built exclusively for EEE & CSE students.</div>
+    </div>
+    <div class="dept-badges" style="flex-direction:column;align-items:flex-end">
+      <div class="dept-badge eee"><i class="ti ti-bolt" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Electrical Engineering</div>
+      <div class="dept-badge cse"><i class="ti ti-code" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Computer Science</div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="h-stat"><div class="h-stat-num">60+</div><div class="h-stat-label">Public universities</div></div>
+    <div class="h-stat"><div class="h-stat-num">7</div><div class="h-stat-label">Countries</div></div>
+    <div class="h-stat"><div class="h-stat-num">3</div><div class="h-stat-label">Degree levels</div></div>
+    <div class="h-stat"><div class="h-stat-num">AI</div><div class="h-stat-label">Eligibility check</div></div>
+  </div>
+</section>
+
+<div class="main-wrap">
+  <div class="filter-card">
+    <div class="filter-title"><i class="ti ti-adjustments-horizontal" style="font-size:13px;vertical-align:-1px;margin-right:5px" aria-hidden="true"></i>Your Profile & Filters</div>
+    
+    <div class="filter-row">
+      <div class="f-field"><div class="f-label">Your Name</div><input id="f-name" type="text" placeholder="e.g. Md. Rakib Hassan"></div>
+      <div class="f-field"><div class="f-label">CGPA (out of 4.0)</div><input id="f-cgpa" type="number" step="0.01" min="0" max="4" placeholder="e.g. 3.60"></div>
+      <div class="f-field"><div class="f-label">IELTS Score</div><input id="f-ielts" type="number" step="0.5" min="0" max="9" placeholder="e.g. 6.5"></div>
+    </div>
+    
+    <div class="filter-row two" style="margin-bottom:12px">
+      <div class="f-field"><div class="f-label">GRE / GMAT Score (optional)</div><input id="f-gre" type="text" placeholder="e.g. GRE 315 or leave blank"></div>
+      <div class="f-field"><div class="f-label">Current Degree Status</div>
+        <select id="f-current">
+          <option value="Completed">Completed</option>
+          <option value="Final Year">Final Year (ongoing)</option>
+          <option value="3rd Year">3rd Year</option>
+        </select>
+      </div>
+    </div>
+    
+    <div style="margin-bottom:12px">
+      <div class="f-label" style="margin-bottom:8px">Department</div>
+      <div class="toggle-group" id="deptGroup">
+        <button class="tog on blue" data-val="EEE" type="button">EEE — Electrical & Electronic</button>
+        <button class="tog" data-val="CSE" type="button">CSE — Computer Science</button>
+        <button class="tog" data-val="Both" type="button">Both / Open</button>
+      </div>
+    </div>
+    
+    <div style="margin-bottom:12px">
+      <div class="f-label" style="margin-bottom:8px">Target Degree Level</div>
+      <div class="toggle-group" id="levelGroup">
+        <button class="tog" data-val="Bachelors" type="button">Bachelor's (Transfer/Foundation)</button>
+        <button class="tog on" data-val="Masters" type="button">Master's (MSc / MEng)</button>
+        <button class="tog" data-val="PhD" type="button">PhD / Doctoral</button>
+      </div>
+    </div>
+    
+    <div style="margin-bottom:12px">
+      <div class="f-label" style="margin-bottom:8px">Preferred Countries</div>
+      <div class="toggle-group" id="countryGroup">
+        <button class="tog on" data-val="USA" type="button">🇺🇸 USA</button>
+        <button class="tog on" data-val="UK" type="button">🇬🇧 UK</button>
+        <button class="tog on" data-val="Germany" type="button">🇩🇪 Germany</button>
+        <button class="tog on" data-val="Australia" type="button">🇦🇺 Australia</button>
+        <button class="tog on" data-val="Malaysia" type="button">🇲🇾 Malaysia</button>
+        <button class="tog on" data-val="Japan" type="button">🇯🇵 Japan</button>
+        <button class="tog on" data-val="Saudi Arabia" type="button">🇸🇦 Saudi Arabia</button>
+      </div>
+    </div>
+    
+    <div style="margin-bottom:4px">
+      <div class="f-label" style="margin-bottom:8px">Funding Preference</div>
+      <div class="toggle-group" id="fundGroup">
+        <button class="tog on teal" data-val="Fully Funded" type="button">Fully Funded</button>
+        <button class="tog on" data-val="Partially Funded" type="button">Partially Funded</button>
+        <button class="tog" data-val="Self Funded" type="button">Self Funded</button>
+      </div>
+    </div>
+    
+    <button class="search-btn" id="searchBtn" type="button">
+      <i class="ti ti-search" style="font-size:16px" aria-hidden="true"></i>
+      <span id="btnTxt">Find Matching Universities</span>
+    </button>
+  </div>
+
+  <div id="resultsArea"></div>
+</div>
+
+<footer style="text-align:center;padding:1.5rem;font-size:12px;color:var(--mid);border-top:1px solid var(--border);background:var(--white)">
+  © 2025 TechAbroad by <strong>@yeahyeahassan</strong> &nbsp;·&nbsp; For EEE & CSE students &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; Always verify with official university websites
+</footer>
+
+<script>
+function makeToggle(groupId, multi=true){
+  const grp = document.getElementById(groupId);
+  grp.querySelectorAll('.tog').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(!multi){grp.querySelectorAll('.tog').forEach(b=>{b.classList.remove('on','teal','blue')});btn.classList.add('on');return;}
+      btn.classList.toggle('on');
+    });
+  });
+}
+makeToggle('deptGroup',false);
+makeToggle('levelGroup',false);
+makeToggle('countryGroup',true);
+makeToggle('fundGroup',true);
+
+function getSelected(groupId){
+  return [...document.querySelectorAll(`#${groupId} .tog.on`)].map(b=>b.dataset.val);
+}
+
+document.getElementById('searchBtn').addEventListener('click', async()=>{
+  const name = document.getElementById('f-name').value.trim()||'Student';
+  const cgpa = parseFloat(document.getElementById('f-cgpa').value)||0;
+  const ielts = parseFloat(document.getElementById('f-ielts').value)||0;
+  const gre = document.getElementById('f-gre').value.trim();
+  const status = document.getElementById('f-current').value;
+  const dept = getSelected('deptGroup')[0]||'EEE';
+  const level = getSelected('levelGroup')[0]||'Masters';
+  const countries = getSelected('countryGroup');
+  const funding = getSelected('fundGroup');
+
+  if(cgpa===0||ielts===0){alert('Please enter your CGPA and IELTS score.');return;}
+  if(countries.length===0){alert('Please select at least one country.');return;}
+
+  const btn=document.getElementById('searchBtn');
+  const btnTxt=document.getElementById('btnTxt');
+  btn.disabled=true;
+  btnTxt.textContent='Checking eligibility...';
+
+  const ra=document.getElementById('resultsArea');
+  ra.innerHTML=`<div class="spinner-wrap"><div class="spin"></div><div class="spin-txt">Analysing profile against ${countries.join(', ')} universities…</div></div>`;
+
+  const prompt=`You are a highly accurate international university admissions expert specialising in EEE (Electrical & Electronic Engineering) and CSE (Computer Science & Engineering) programmes at PUBLIC universities.
+
+Student profile:
+- Name: ${name}
+- Department interest: ${dept}
+- Target degree: ${level}
+- CGPA: ${cgpa}/4.0
+- IELTS: ${ielts}
+- GRE/GMAT: ${gre||'Not provided'}
+- Current status: ${status}
+- Countries of interest: ${countries.join(', ')}
+- Funding preference: ${funding.join(', ')}
+
+Return ONLY a raw JSON array of exactly 8-10 real PUBLIC university recommendations. No markdown fences, no preamble. Each object must have EXACTLY these keys:
+
+{
+  "name": "Official university name",
+  "country": "one of: USA / UK / Germany / Australia / Malaysia / Japan / Saudi Arabia",
+  "city": "City name",
+  "flag": "single emoji flag",
+  "qs_rank": "QS world rank e.g. #201-250 or Top 50",
+  "dept": "EEE or CSE or Both",
+  "level": "${level}",
+  "programme": "Exact programme name e.g. MSc Electrical Engineering",
+  "intakes": ["Month Year", "Month Year"],
+  "deadline": "Application deadline e.g. Jan 15 / Rolling",
+  "min_cgpa": "e.g. 3.0 or 2.5 (UK 2:1)",
+  "min_ielts": "e.g. 6.5",
+  "gre_required": "Yes / No / Recommended",
+  "tuition": "Annual cost e.g. $12,000/yr or Free (Germany)",
+  "funding_type": "Fully Funded" or "Partially Funded" or "Self Funded",
+  "scholarship_name": "Real scholarship name e.g. DAAD, Chevening, Fulbright, King Abdullah, MEXT, UTM Scholarship etc.",
+  "scholarship_url": "https://real scholarship website",
+  "eligibility_verdict": "Eligible" or "Likely Eligible" or "Check Requirements" or "Below Requirements",
+  "eligibility_reason": "One sentence explanation why",
+  "website": "https://official department page"
+}
+
+Rules:
+- Only REAL existing public universities
+- Only genuine scholarship programmes
+- Eligibility verdict must be based on the student's actual CGPA ${cgpa} vs min_cgpa and IELTS ${ielts} vs min_ielts
+- Include both funded and partially funded options
+- Spread across the selected countries: ${countries.join(', ')}
+- Programmes must be EEE or CSE relevant
+- For Germany: many programmes are free — note that
+- For Saudi Arabia: include KFUPM, KAU
+- For Malaysia: include UTM, UM, UPM
+- For Japan: include MEXT scholarship options at public universities
+- For Australia: include Group of Eight universities
+`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await res.json();
+    const raw=data.content?.filter(b=>b.type==='text').map(b=>b.text).join('')||'';
+    let unis;
+    try{unis=JSON.parse(raw.replace(/```json|```/g,'').trim());}
+    catch(e){throw new Error('Could not parse results. Please try again.');}
+    if(!Array.isArray(unis)||unis.length===0)throw new Error('No results returned.');
+
+    const vc={
+      'Eligible':'b-elig-yes',
+      'Likely Eligible':'b-elig-yes',
+      'Check Requirements':'b-elig-check',
+      'Below Requirements':'b-elig-no'
+    };
+    const fc={
+      'Fully Funded':'b-funded',
+      'Partially Funded':'b-partial',
+      'Self Funded':'b-level'
+    };
+
+    const eligible=unis.filter(u=>u.eligibility_verdict==='Eligible'||u.eligibility_verdict==='Likely Eligible').length;
+
+    let html=`
+    <div class="elig-summary">
+      <div class="es-left">
+        <h3>Results for ${name}</h3>
+        <p>${unis.length} universities found · ${eligible} you are eligible/likely eligible for</p>
+      </div>
+      <div class="es-chips">
+        <div class="es-chip">${dept}</div>
+        <div class="es-chip">${level}</div>
+        <div class="es-chip">CGPA ${cgpa.toFixed(2)}</div>
+        <div class="es-chip">IELTS ${ielts.toFixed(1)}</div>
+      </div>
+    </div>
+    <div class="ai-disclaimer">
+      <i class="ti ti-info-circle" style="font-size:14px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
+      <span>Results generated by Claude AI using real university data. Eligibility is estimated based on your profile. Always verify current requirements directly on official university websites before applying.</span>
+    </div>
+    <div class="results-bar">
+      <div>
+        <div class="res-title">${unis.length} Matching Universities</div>
+        <div class="res-sub">${countries.join(' · ')}</div>
+      </div>
+      <button onclick="document.getElementById('resultsArea').innerHTML='';document.getElementById('searchBtn').disabled=false;document.getElementById('btnTxt').textContent='Find Matching Universities'" style="font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-family:Sora,sans-serif;color:var(--mid)">Clear results</button>
+    </div>`;
+
+    unis.forEach((u,i)=>{
+      const eClass=vc[u.eligibility_verdict]||'b-elig-check';
+      const fClass=fc[u.funding_type]||'b-level';
+      const cgpaMet=cgpa>=(parseFloat(u.min_cgpa)||0);
+      const ieltsMet=ielts>=(parseFloat(u.min_ielts)||0);
+      const cpill=cgpaMet?'req-pill meet':'req-pill fail';
+      const ipill=ieltsMet?'req-pill meet':'req-pill fail';
+
+      html+=`<div class="uni-card">
+        <div class="card-header">
+          <div class="flag-box">${u.flag||'🏫'}</div>
+          <div class="uni-meta">
+            <div class="uni-name">${u.name}</div>
+            <div class="uni-loc"><i class="ti ti-map-pin" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ${u.city}, ${u.country} &nbsp;·&nbsp; ${u.qs_rank}</div>
+            <div class="card-badges">
+              <span class="badge ${eClass}"><i class="ti ti-${u.eligibility_verdict==='Eligible'||u.eligibility_verdict==='Likely Eligible'?'circle-check':'alert-circle'}" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> ${u.eligibility_verdict}</span>
+              <span class="badge ${fClass}"><i class="ti ti-currency-dollar" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> ${u.funding_type}</span>
+              <span class="badge b-dept">${u.dept}</span>
+              <span class="badge b-level">${u.level}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div class="cg-item"><div class="cg-key">Programme</div><div class="cg-val" style="font-size:12px">${u.programme}</div></div>
+          <div class="cg-item"><div class="cg-key">Tuition</div><div class="cg-val">${u.tuition}</div></div>
+          <div class="cg-item"><div class="cg-key">Deadline</div><div class="cg-val">${u.deadline}</div></div>
+        </div>
+        <div class="intakes-row">
+          <span class="intakes-label"><i class="ti ti-calendar" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Intakes:</span>
+          ${(u.intakes||[]).map(it=>`<span class="intake-chip">${it}</span>`).join('')}
+        </div>
+        <div class="reqs-row">
+          <span style="font-size:11px;color:var(--mid);font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Your scores:</span>
+          <span class="${cpill}">CGPA ${cgpa.toFixed(2)} (min ${u.min_cgpa})</span>
+          <span class="${ipill}">IELTS ${ielts.toFixed(1)} (min ${u.min_ielts})</span>
+          ${u.gre_required!=='No'?`<span class="req-pill">GRE ${u.gre_required}</span>`:''}
+        </div>
+        <div class="card-foot">
+          <div class="scholarship-note"><i class="ti ti-award" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i> ${u.scholarship_name||'Check university website'}</div>
+          <div class="card-actions">
+            <button class="btn-ask" onclick="sendPrompt('Tell me more about ${u.name.replace(/'/g,"\\'")} for ${u.level} ${u.dept} — scholarships, application process, and tips for Bangladeshi students')">Ask AI ↗</button>
+            ${u.website?`<a class="btn-visit" href="${u.website}" target="_blank">Visit <i class="ti ti-external-link" style="font-size:11px" aria-hidden="true"></i></a>`:''}
+          </div>
+        </div>
+      </div>`;
+    });
+
+    ra.innerHTML=html;
+  }catch(err){
+    ra.innerHTML=`<div class="err-box"><i class="ti ti-alert-triangle" style="font-size:14px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i>${err.message||'Something went wrong. Please try again.'}</div>`;
+  }finally{
+    btn.disabled=false;
+    btnTxt.textContent='Find Matching Universities';
+  }
+});
+</script>
