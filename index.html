@@ -1,432 +1,555 @@
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
---bg:#F7F6F2;--white:#FFFFFF;--navy:#0F2044;--navy2:#1A3260;--blue:#1E5FA8;--blue-l:#EBF2FB;--teal:#0E7C62;--teal-l:#E4F5F0;--gold:#B8860B;--gold-l:#FDF6E3;--red:#C0392B;--red-l:#FDECEA;--border:#E0DCd4;--mid:#6B6A65;--soft:#F2F0EA;--success:#1B7B4B;--success-l:#E6F4EC;--warn:#92600A;--warn-l:#FEF3DC;
+--bg:#F5F4F0;--white:#FFFFFF;--navy:#0D1F3C;--navy2:#162D52;--blue:#1B5DA8;--blue2:#1447A0;--bluel:#EAF2FC;--teal:#0A7C62;--teall:#E3F5F0;--green:#1A7A3C;--greenl:#E6F4EC;--amber:#9A6800;--amberl:#FEF3DC;--red:#C0392B;--redl:#FDECEA;--border:#DEDAD2;--soft:#F0EDE6;--mid:#696862;--light:#F8F7F4;
+--t-ease:cubic-bezier(0.34,1.56,0.64,1);
+--t-smooth:cubic-bezier(0.25,0.46,0.45,0.94);
 }
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--navy);min-height:100vh}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--navy);min-height:100vh;overflow-x:hidden}
 
-.site-header{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-icon{width:38px;height:38px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;letter-spacing:-0.5px}
-.brand-name{font-size:16px;font-weight:700;color:var(--navy);letter-spacing:-0.3px}
-.brand-name span{color:var(--blue)}
-.ai-pill{font-size:11px;font-weight:600;background:var(--blue-l);color:#0C447C;padding:4px 11px;border-radius:20px;border:1px solid #B5D4F4}
+.hdr{background:var(--navy);padding:0 1.5rem;height:58px;display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{display:flex;align-items:center;gap:10px}
+.hdr-logo{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;letter-spacing:-0.3px;transition:transform 0.3s var(--t-ease)}
+.hdr-logo:hover{transform:rotate(-8deg) scale(1.1)}
+.hdr-title{color:#fff;font-size:15px;font-weight:700;letter-spacing:-0.3px}
+.hdr-title span{color:#85B7EB}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.hdr-pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.04em;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.75)}
+.hdr-pill.bd{background:rgba(0,100,0,0.35);border-color:#27500A;color:#C0DD97}
+.hdr-pill.ai{background:rgba(27,93,168,0.4);border-color:#378ADD;color:#B5D4F4}
 
-.hero{background:var(--navy);padding:2.5rem 1.5rem 2rem;color:#fff}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.hero-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#85B7EB;margin-bottom:0.5rem}
-.hero h1{font-family:'Lora',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:600;line-height:1.2;color:#fff;max-width:480px}
-.hero h1 em{font-style:italic;color:#85B7EB}
-.hero-desc{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin-top:0.5rem;max-width:420px}
-.dept-badges{display:flex;gap:8px;flex-wrap:wrap}
-.dept-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.2);color:#fff;background:rgba(255,255,255,0.08)}
-.dept-badge.eee{background:rgba(30,95,168,0.35);border-color:#378ADD;color:#B5D4F4}
-.dept-badge.cse{background:rgba(14,124,98,0.35);border-color:#1D9E75;color:#9FE1CB}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.h-stat{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem}
-.h-stat-num{font-size:20px;font-weight:700;color:#fff}
-.h-stat-label{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px}
+.hero{background:var(--navy);padding:2rem 1.5rem 0}
+.hero-inner{max-width:860px;margin:0 auto}
+.hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-bottom:1.5rem}
+.hero-left{}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#85B7EB;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:#fff;line-height:1.15;max-width:500px}
+.hero-h1 em{font-style:italic;color:#85B7EB}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin-top:0.5rem;max-width:440px}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:0.75rem}
+.htag{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8)}
+.htag.eee{background:rgba(27,93,168,0.3);border-color:#378ADD;color:#B5D4F4}
+.htag.cse{background:rgba(10,124,98,0.3);border-color:#1D9E75;color:#9FE1CB}
+.htag.bd{background:rgba(26,122,60,0.3);border-color:#639922;color:#C0DD97}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:12px 12px 0 0;overflow:hidden;margin-top:1rem}
+.hstat{background:rgba(255,255,255,0.05);padding:0.85rem 1rem;transition:background 0.2s}
+.hstat:hover{background:rgba(255,255,255,0.1)}
+.hstat-n{font-size:22px;font-weight:800;color:#fff}
+.hstat-l{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
 
-.main-wrap{max-width:900px;margin:0 auto;padding:2rem 1.25rem}
+.wrap{max-width:860px;margin:0 auto;padding:1.5rem 1.25rem}
 
-.filter-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
-.filter-title{font-size:13px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:1rem}
-.filter-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
-.filter-row.two{grid-template-columns:1fr 1fr}
-.filter-row.five{grid-template-columns:repeat(5,1fr)}
-.filter-row.four{grid-template-columns:repeat(4,1fr)}
-.f-field{display:flex;flex-direction:column;gap:5px}
-.f-label{font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.06em}
-.f-field input,.f-field select{height:40px;border:1.5px solid var(--border);border-radius:9px;padding:0 12px;font-family:'Sora',sans-serif;font-size:13px;color:var(--navy);background:var(--white);outline:none;transition:border-color 0.2s;-webkit-appearance:none}
-.f-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%236B6A65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px}
-.f-field input:focus,.f-field select:focus{border-color:var(--blue)}
+.filter-panel{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;transition:box-shadow 0.3s var(--t-smooth)}
+.filter-panel:hover{box-shadow:0 4px 20px rgba(13,31,60,0.07)}
+.fp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.fp-title{font-size:13px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.07em;display:flex;align-items:center;gap:6px}
+.fp-bd-badge{font-size:11px;font-weight:700;background:var(--greenl);color:#0F5132;padding:3px 10px;border-radius:20px;border:1px solid #9DD9B6}
 
-.toggle-group{display:flex;gap:6px;flex-wrap:wrap}
-.tog{border:1.5px solid var(--border);border-radius:8px;padding:6px 13px;font-size:12px;font-weight:500;cursor:pointer;background:var(--white);color:var(--mid);transition:all 0.18s;font-family:'Sora',sans-serif}
-.tog:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
-.tog.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.tog.on.teal{background:var(--teal);border-color:var(--teal)}
-.tog.on.blue{background:var(--blue);border-color:var(--blue)}
+.frow{display:grid;gap:10px;margin-bottom:10px}
+.frow.g3{grid-template-columns:1fr 1fr 1fr}
+.frow.g2{grid-template-columns:1fr 1fr}
+.frow.g4{grid-template-columns:repeat(4,1fr)}
+.ff{display:flex;flex-direction:column;gap:4px}
+.fl{font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.07em}
+.ff input,.ff select{height:40px;border:1.5px solid var(--border);border-radius:9px;padding:0 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--navy);background:var(--white);outline:none;transition:border-color 0.2s,transform 0.15s;-webkit-appearance:none}
+.ff select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%23696862' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px}
+.ff input:focus,.ff select:focus{border-color:var(--blue);transform:translateY(-1px)}
 
-.search-btn{width:100%;height:46px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;margin-top:0.75rem;display:flex;align-items:center;justify-content:center;gap:8px}
-.search-btn:hover{background:var(--navy2);transform:translateY(-1px)}
-.search-btn:disabled{background:#8A9AB8;cursor:not-allowed;transform:none}
+.tg-group{display:flex;gap:6px;flex-wrap:wrap}
+.tg{border:1.5px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;background:var(--white);color:var(--mid);transition:all 0.22s var(--t-ease);font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+.tg:hover{border-color:var(--blue);color:var(--blue);background:var(--bluel);transform:translateY(-2px)}
+.tg.on{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px)}
+.tg.on:hover{background:var(--navy2);transform:translateY(-2px)}
+.tg.on.g{background:var(--green);border-color:var(--green)}
+.tg.on.t{background:var(--teal);border-color:var(--teal)}
+.tg.on.b{background:var(--blue);border-color:var(--blue)}
 
-.results-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
-.res-title{font-size:16px;font-weight:600;color:var(--navy)}
-.res-sub{font-size:12px;color:var(--mid)}
-.sort-sel{height:34px;border:1px solid var(--border);border-radius:8px;padding:0 28px 0 10px;font-family:'Sora',sans-serif;font-size:12px;color:var(--navy);background:var(--white);outline:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%236B6A65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
-
-.uni-card{background:var(--white);border:1px solid var(--border);border-radius:14px;margin-bottom:1rem;overflow:hidden;transition:border-color 0.2s}
-.uni-card:hover{border-color:#85B7EB}
-.card-header{padding:1rem 1.25rem 0.75rem;display:flex;gap:12px;align-items:flex-start}
-.flag-box{width:40px;height:40px;border-radius:9px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.uni-meta{flex:1;min-width:0}
-.uni-name{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px;line-height:1.3}
-.uni-loc{font-size:12px;color:var(--mid)}
-.card-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-.badge{padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
-.b-elig-yes{background:var(--success-l);color:#0F5132}
-.b-elig-check{background:var(--warn-l);color:var(--warn)}
-.b-elig-no{background:var(--red-l);color:var(--red)}
-.b-funded{background:var(--teal-l);color:#085041}
-.b-partial{background:var(--gold-l);color:#633806}
-.b-dept{background:var(--blue-l);color:#0C447C}
-.b-level{background:var(--soft);color:var(--navy);border:1px solid var(--border)}
-
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--border)}
-.cg-item{padding:10px 14px;border-right:1px solid var(--border)}
-.cg-item:last-child{border-right:none}
-.cg-key{font-size:11px;color:var(--mid);margin-bottom:3px}
-.cg-val{font-size:13px;font-weight:500;color:var(--navy)}
-
-.intakes-row{padding:8px 14px;background:var(--soft);border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.intakes-label{font-size:11px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.05em}
-.intake-chip{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;background:var(--navy);color:#fff}
-
-.reqs-row{padding:10px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.req-pill{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:500;background:var(--soft);color:var(--navy);border:1px solid var(--border)}
-.req-pill.meet{background:var(--success-l);color:#0F5132;border-color:#9DD9B6}
-.req-pill.short{background:var(--warn-l);color:var(--warn);border-color:#F0C97A}
-.req-pill.fail{background:var(--red-l);color:var(--red);border-color:#F09595}
-
-.card-foot{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.scholarship-note{font-size:12px;color:var(--teal);font-weight:500}
-.card-actions{display:flex;gap:8px}
-.btn-visit{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--blue);color:#fff;border:none;cursor:pointer;font-family:'Sora',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
-.btn-ask{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;background:var(--soft);color:var(--navy);border:1px solid var(--border);cursor:pointer;font-family:'Sora',sans-serif}
-.btn-ask:hover{background:var(--blue-l);border-color:#85B7EB;color:var(--blue)}
+.go-btn{width:100%;height:48px;background:var(--navy);color:#fff;border:none;border-radius:11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.25s var(--t-ease);margin-top:0.875rem;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:-0.2px}
+.go-btn:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(13,31,60,0.2)}
+.go-btn:active{transform:translateY(0)}
+.go-btn:disabled{background:#8A9AB8;cursor:not-allowed;transform:none;box-shadow:none}
 
 .spinner-wrap{text-align:center;padding:3rem}
-.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:rot 0.75s linear infinite;margin:0 auto 1rem}
+.spin{width:38px;height:38px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:rot 0.7s linear infinite;margin:0 auto 1rem}
 @keyframes rot{to{transform:rotate(360deg)}}
-.spin-txt{font-size:14px;color:var(--mid)}
 
-.ai-disclaimer{background:var(--gold-l);border:1px solid #F0C97A;border-radius:10px;padding:10px 14px;font-size:12px;color:#633806;margin-bottom:1rem;display:flex;gap:8px}
-.empty-state{text-align:center;padding:3rem;color:var(--mid);font-size:14px}
-.err-box{background:var(--red-l);border:1px solid #F09595;border-radius:10px;padding:10px 14px;font-size:13px;color:var(--red);margin-bottom:1rem}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
+.rh-left h3{font-size:16px;font-weight:700;color:var(--navy)}
+.rh-left p{font-size:12px;color:var(--mid);margin-top:2px}
+.clear-btn{font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mid);transition:all 0.2s;font-weight:500}
+.clear-btn:hover{border-color:var(--red);color:var(--red);transform:scale(1.02)}
 
-.elig-summary{background:var(--navy);border-radius:12px;padding:1rem 1.25rem;color:#fff;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
-.es-left h3{font-size:15px;font-weight:600;margin-bottom:3px}
-.es-left p{font-size:12px;color:rgba(255,255,255,0.6)}
-.es-chips{display:flex;gap:8px;flex-wrap:wrap}
-.es-chip{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(255,255,255,0.12);color:#fff}
+.summary-bar{background:var(--navy);border-radius:12px;padding:1rem 1.25rem;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem}
+.sb-left h3{font-size:14px;font-weight:700;margin-bottom:3px}
+.sb-left p{font-size:11px;color:rgba(255,255,255,0.55)}
+.sb-chips{display:flex;gap:6px;flex-wrap:wrap}
+.sb-chip{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(255,255,255,0.12);color:#fff}
+
+.notice{border-radius:10px;padding:10px 14px;font-size:12px;margin-bottom:1rem;display:flex;gap:8px;align-items:flex-start}
+.notice.amber{background:var(--amberl);border:1px solid #F0C97A;color:#633806}
+.notice.green{background:var(--greenl);border:1px solid #9DD9B6;color:#0F5132}
+.notice.red{background:var(--redl);border:1px solid #F09595;color:var(--red)}
+
+.uni-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;margin-bottom:1rem;overflow:hidden;transition:all 0.3s var(--t-smooth);cursor:default}
+.uni-card:hover{border-color:#85B7EB;transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,31,60,0.1)}
+.uni-card:hover .card-accent{width:100%}
+.card-accent{height:3px;background:var(--blue);width:0;transition:width 0.4s var(--t-smooth)}
+.uni-card:hover .flag-box{transform:scale(1.12) rotate(-5deg)}
+.uni-card:hover .uni-name{color:var(--blue)}
+
+.card-top{padding:1.1rem 1.25rem 0.85rem;display:flex;gap:12px;align-items:flex-start}
+.flag-box{width:42px;height:42px;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:transform 0.3s var(--t-ease)}
+.uni-meta{flex:1;min-width:0}
+.uni-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px;line-height:1.3;transition:color 0.2s}
+.uni-sub{font-size:11px;color:var(--mid);display:flex;align-items:center;gap:4px}
+.top-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;transition:transform 0.2s var(--t-ease)}
+.badge:hover{transform:scale(1.05)}
+.b-e{background:var(--greenl);color:#0F5132}
+.b-le{background:var(--greenl);color:#0F5132}
+.b-ch{background:var(--amberl);color:#633806}
+.b-br{background:var(--redl);color:var(--red)}
+.b-ff{background:var(--teall);color:#085041}
+.b-pf{background:var(--amberl);color:#633806}
+.b-sf{background:var(--soft);color:var(--navy);border:1px solid var(--border)}
+.b-dept{background:var(--bluel);color:#0C447C}
+.b-lvl{background:var(--soft);color:var(--navy);border:1px solid var(--border)}
+
+.elig-bar-wrap{padding:0.75rem 1.25rem;border-top:1px solid var(--border);background:var(--light)}
+.elig-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-bottom:5px;font-weight:600}
+.elig-bar-track{height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+.elig-bar-fill{height:100%;border-radius:99px;transition:width 0.8s var(--t-smooth)}
+.ef-green{background:var(--green)}
+.ef-amber{background:var(--amber)}
+.ef-red{background:var(--red)}
+.elig-verdict{font-size:11px;font-weight:700;margin-top:5px}
+.ev-green{color:var(--green)}
+.ev-amber{color:var(--amber)}
+.ev-red{color:var(--red)}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.cg{padding:9px 13px;border-right:1px solid var(--border)}
+.cg:last-child{border-right:none}
+.cg-k{font-size:10px;color:var(--mid);margin-bottom:2px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+.cg-v{font-size:12px;font-weight:600;color:var(--navy)}
+
+.intakes-row{padding:8px 14px;background:var(--soft);border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ir-lbl{font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.05em}
+.i-chip{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;transition:transform 0.2s var(--t-ease)}
+.i-chip:hover{transform:scale(1.05)}
+
+.req-scores{padding:9px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rs-lbl{font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.05em}
+.rp{padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;transition:transform 0.2s var(--t-ease)}
+.rp:hover{transform:scale(1.05)}
+.rp-meet{background:var(--greenl);color:#0F5132;border:1px solid #9DD9B6}
+.rp-warn{background:var(--amberl);color:#633806;border:1px solid #F0C97A}
+.rp-fail{background:var(--redl);color:var(--red);border:1px solid #F09595}
+.rp-na{background:var(--soft);color:var(--mid);border:1px solid var(--border)}
+
+.docs-section{padding:10px 14px;border-top:1px solid var(--border)}
+.docs-toggle{font-size:11px;font-weight:700;color:var(--blue);cursor:pointer;display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.docs-toggle:hover{gap:7px}
+.docs-list{margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.doc-item{font-size:11px;color:var(--navy);display:flex;align-items:center;gap:5px;padding:3px 0;transition:color 0.15s}
+.doc-item:hover{color:var(--blue)}
+.doc-item i{color:var(--blue);font-size:12px}
+.doc-item.bd-specific i{color:var(--green)}
+.doc-item.bd-specific{color:var(--green);font-weight:600}
+
+.card-foot{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.schol-note{font-size:11px;color:var(--teal);font-weight:600;display:flex;align-items:center;gap:4px;max-width:55%}
+.card-actions{display:flex;gap:6px}
+.btn-ask{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;background:var(--soft);color:var(--navy);border:1px solid var(--border);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.22s var(--t-ease)}
+.btn-ask:hover{background:var(--bluel);border-color:#85B7EB;color:var(--blue);transform:translateY(-2px)}
+.btn-visit{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:all 0.22s var(--t-ease)}
+.btn-visit:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(27,93,168,0.3)}
+
+.empty{text-align:center;padding:3rem;color:var(--mid);font-size:13px}
 
 @media(max-width:600px){
-.filter-row{grid-template-columns:1fr 1fr}
-.filter-row.five{grid-template-columns:repeat(3,1fr)}
-.filter-row.four{grid-template-columns:repeat(2,1fr)}
-.hero-stats{grid-template-columns:repeat(2,1fr)}
+.frow.g3,.frow.g4{grid-template-columns:1fr 1fr}
+.hero-stats{grid-template-columns:1fr 1fr}
 .card-grid{grid-template-columns:1fr 1fr}
-.cg-item:nth-child(2){border-right:none}
-.hero h1{font-size:1.4rem}
+.docs-list{grid-template-columns:1fr}
+.hstat:nth-child(n+3){display:none}
 }
 </style>
 
-<h2 class="sr-only">EEE & CSE Global University Finder — AI-powered eligibility and intake checker for international students</h2>
+<h2 class="sr-only">TechAbroad BD — UK, Scotland & USA public university finder for Bangladeshi EEE and CSE students with eligibility status and document checklist</h2>
 
-<header class="site-header">
-  <div class="brand">
-    <div class="brand-icon">Y✦</div>
-    <div class="brand-name">Tech<span>Abroad</span></div>
+<header class="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-logo">Y✦</div>
+    <div class="hdr-title">Tech<span>Abroad</span> BD</div>
   </div>
-  <div class="ai-pill"><i class="ti ti-cpu" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> EEE & CSE Portal</div>
+  <div class="hdr-right">
+    <div class="hdr-pill bd"><i class="ti ti-flag" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> For Bangladeshi Students</div>
+    <div class="hdr-pill ai">AI-Powered</div>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="hero-top">
-    <div>
-      <div class="hero-label">Global University Finder</div>
-      <h1>Study <em>Engineering & Computing</em><br>Abroad — Find Your Match</h1>
-      <div class="hero-desc">Real public universities across 7 countries. Instant eligibility check, intake windows, and scholarship status — built exclusively for EEE & CSE students.</div>
+  <div class="hero-inner">
+    <div class="hero-row">
+      <div class="hero-left">
+        <div class="hero-eyebrow"><i class="ti ti-world" style="font-size:13px" aria-hidden="true"></i> EEE & CSE Global University Portal</div>
+        <h1 class="hero-h1">UK, Scotland & USA<br><em>Public Universities</em><br>— Find Your Path</h1>
+        <p class="hero-sub">Real public universities with live eligibility check, intake windows, scholarship status & complete document checklist — built exclusively for Bangladeshi EEE & CSE students.</p>
+        <div class="hero-tags">
+          <span class="htag eee"><i class="ti ti-bolt" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> EEE</span>
+          <span class="htag cse"><i class="ti ti-code" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> CSE</span>
+          <span class="htag bd"><i class="ti ti-certificate" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Bangladesh-specific docs</span>
+          <span class="htag"><i class="ti ti-file-check" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Full doc checklist</span>
+        </div>
+      </div>
     </div>
-    <div class="dept-badges" style="flex-direction:column;align-items:flex-end">
-      <div class="dept-badge eee"><i class="ti ti-bolt" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Electrical Engineering</div>
-      <div class="dept-badge cse"><i class="ti ti-code" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Computer Science</div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">120+</div><div class="hstat-l">UK & Scotland universities</div></div>
+      <div class="hstat"><div class="hstat-n">200+</div><div class="hstat-l">USA public universities</div></div>
+      <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Degree levels</div></div>
+      <div class="hstat"><div class="hstat-n">BD</div><div class="hstat-l">Tailored for Bangladesh</div></div>
     </div>
-  </div>
-  <div class="hero-stats">
-    <div class="h-stat"><div class="h-stat-num">60+</div><div class="h-stat-label">Public universities</div></div>
-    <div class="h-stat"><div class="h-stat-num">7</div><div class="h-stat-label">Countries</div></div>
-    <div class="h-stat"><div class="h-stat-num">3</div><div class="h-stat-label">Degree levels</div></div>
-    <div class="h-stat"><div class="h-stat-num">AI</div><div class="h-stat-label">Eligibility check</div></div>
   </div>
 </section>
 
-<div class="main-wrap">
-  <div class="filter-card">
-    <div class="filter-title"><i class="ti ti-adjustments-horizontal" style="font-size:13px;vertical-align:-1px;margin-right:5px" aria-hidden="true"></i>Your Profile & Filters</div>
-    
-    <div class="filter-row">
-      <div class="f-field"><div class="f-label">Your Name</div><input id="f-name" type="text" placeholder="e.g. Md. Rakib Hassan"></div>
-      <div class="f-field"><div class="f-label">CGPA (out of 4.0)</div><input id="f-cgpa" type="number" step="0.01" min="0" max="4" placeholder="e.g. 3.60"></div>
-      <div class="f-field"><div class="f-label">IELTS Score</div><input id="f-ielts" type="number" step="0.5" min="0" max="9" placeholder="e.g. 6.5"></div>
+<div class="wrap">
+  <div class="filter-panel">
+    <div class="fp-head">
+      <div class="fp-title"><i class="ti ti-adjustments-horizontal" style="font-size:14px" aria-hidden="true"></i> Your Academic Profile</div>
+      <div class="fp-bd-badge"><i class="ti ti-flag" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Bangladeshi Student Mode</div>
     </div>
-    
-    <div class="filter-row two" style="margin-bottom:12px">
-      <div class="f-field"><div class="f-label">GRE / GMAT Score (optional)</div><input id="f-gre" type="text" placeholder="e.g. GRE 315 or leave blank"></div>
-      <div class="f-field"><div class="f-label">Current Degree Status</div>
-        <select id="f-current">
-          <option value="Completed">Completed</option>
-          <option value="Final Year">Final Year (ongoing)</option>
-          <option value="3rd Year">3rd Year</option>
+
+    <div class="frow g4">
+      <div class="ff"><div class="fl">Your Name</div><input id="f-name" type="text" placeholder="e.g. Md. Rakib"></div>
+      <div class="ff"><div class="fl">CGPA (4.0 scale)</div><input id="f-cgpa" type="number" step="0.01" min="2" max="4" placeholder="e.g. 3.60"></div>
+      <div class="ff"><div class="fl">IELTS Score</div><input id="f-ielts" type="number" step="0.5" min="4" max="9" placeholder="e.g. 6.5"></div>
+      <div class="ff"><div class="fl">GRE Score (optional)</div><input id="f-gre" type="text" placeholder="e.g. 315 or blank"></div>
+    </div>
+
+    <div class="frow g3">
+      <div class="ff"><div class="fl">Current Status</div>
+        <select id="f-status">
+          <option>Completed Bachelor's</option>
+          <option>Final Year Bachelor's</option>
+          <option>Completed Master's</option>
+          <option>3rd Year Bachelor's</option>
+        </select>
+      </div>
+      <div class="ff"><div class="fl">Home University</div>
+        <select id="f-homeuni">
+          <option>UIU – United International University</option>
+          <option>BUET – Bangladesh Univ. of Engineering</option>
+          <option>KUET – Khulna Univ. of Engineering</option>
+          <option>RUET – Rajshahi Univ. of Engineering</option>
+          <option>CUET – Chittagong Univ. of Engineering</option>
+          <option>BRAC University</option>
+          <option>North South University (NSU)</option>
+          <option>AIUB</option>
+          <option>EWU – East West University</option>
+          <option>SUST – Shahjalal University</option>
+          <option>Other Bangladesh University</option>
+        </select>
+      </div>
+      <div class="ff"><div class="fl">Research Experience</div>
+        <select id="f-research">
+          <option value="none">No research experience</option>
+          <option value="some">1-2 papers / projects</option>
+          <option value="good">Published paper(s)</option>
+          <option value="strong">Multiple publications</option>
         </select>
       </div>
     </div>
-    
-    <div style="margin-bottom:12px">
-      <div class="f-label" style="margin-bottom:8px">Department</div>
-      <div class="toggle-group" id="deptGroup">
-        <button class="tog on blue" data-val="EEE" type="button">EEE — Electrical & Electronic</button>
-        <button class="tog" data-val="CSE" type="button">CSE — Computer Science</button>
-        <button class="tog" data-val="Both" type="button">Both / Open</button>
+
+    <div style="margin-bottom:10px">
+      <div class="fl" style="margin-bottom:7px">Department</div>
+      <div class="tg-group" id="dg-dept">
+        <button class="tg on b" data-v="EEE" type="button">EEE — Electrical & Electronic</button>
+        <button class="tg" data-v="CSE" type="button">CSE — Computer Science</button>
+        <button class="tg" data-v="Both" type="button">Both / Open to Either</button>
       </div>
     </div>
-    
-    <div style="margin-bottom:12px">
-      <div class="f-label" style="margin-bottom:8px">Target Degree Level</div>
-      <div class="toggle-group" id="levelGroup">
-        <button class="tog" data-val="Bachelors" type="button">Bachelor's (Transfer/Foundation)</button>
-        <button class="tog on" data-val="Masters" type="button">Master's (MSc / MEng)</button>
-        <button class="tog" data-val="PhD" type="button">PhD / Doctoral</button>
+
+    <div style="margin-bottom:10px">
+      <div class="fl" style="margin-bottom:7px">Target Degree Level</div>
+      <div class="tg-group" id="dg-level">
+        <button class="tg" data-v="Bachelors" type="button">Bachelor's / Transfer</button>
+        <button class="tg on" data-v="Masters" type="button">Master's (MSc/MEng)</button>
+        <button class="tg" data-v="PhD" type="button">PhD / Doctoral</button>
       </div>
     </div>
-    
-    <div style="margin-bottom:12px">
-      <div class="f-label" style="margin-bottom:8px">Preferred Countries</div>
-      <div class="toggle-group" id="countryGroup">
-        <button class="tog on" data-val="USA" type="button">🇺🇸 USA</button>
-        <button class="tog on" data-val="UK" type="button">🇬🇧 UK</button>
-        <button class="tog on" data-val="Germany" type="button">🇩🇪 Germany</button>
-        <button class="tog on" data-val="Australia" type="button">🇦🇺 Australia</button>
-        <button class="tog on" data-val="Malaysia" type="button">🇲🇾 Malaysia</button>
-        <button class="tog on" data-val="Japan" type="button">🇯🇵 Japan</button>
-        <button class="tog on" data-val="Saudi Arabia" type="button">🇸🇦 Saudi Arabia</button>
+
+    <div style="margin-bottom:10px">
+      <div class="fl" style="margin-bottom:7px">Country / Region</div>
+      <div class="tg-group" id="dg-country">
+        <button class="tg on" data-v="UK England" type="button">🇬🇧 UK — England</button>
+        <button class="tg on" data-v="UK Scotland" type="button">🏴󠁧󠁢󠁳󠁣󠁴󠁿 UK — Scotland</button>
+        <button class="tg on" data-v="USA" type="button">🇺🇸 USA</button>
+        <button class="tg" data-v="Germany" type="button">🇩🇪 Germany</button>
+        <button class="tg" data-v="Australia" type="button">🇦🇺 Australia</button>
+        <button class="tg" data-v="Malaysia" type="button">🇲🇾 Malaysia</button>
+        <button class="tg" data-v="Japan" type="button">🇯🇵 Japan</button>
+        <button class="tg" data-v="Saudi Arabia" type="button">🇸🇦 Saudi Arabia</button>
       </div>
     </div>
-    
+
     <div style="margin-bottom:4px">
-      <div class="f-label" style="margin-bottom:8px">Funding Preference</div>
-      <div class="toggle-group" id="fundGroup">
-        <button class="tog on teal" data-val="Fully Funded" type="button">Fully Funded</button>
-        <button class="tog on" data-val="Partially Funded" type="button">Partially Funded</button>
-        <button class="tog" data-val="Self Funded" type="button">Self Funded</button>
+      <div class="fl" style="margin-bottom:7px">Funding Preference</div>
+      <div class="tg-group" id="dg-fund">
+        <button class="tg on t" data-v="Fully Funded" type="button">Fully Funded</button>
+        <button class="tg on" data-v="Partially Funded" type="button">Partially Funded</button>
+        <button class="tg" data-v="Self Funded" type="button">Self Funded</button>
       </div>
     </div>
-    
-    <button class="search-btn" id="searchBtn" type="button">
+
+    <button class="go-btn" id="searchBtn" type="button">
       <i class="ti ti-search" style="font-size:16px" aria-hidden="true"></i>
-      <span id="btnTxt">Find Matching Universities</span>
+      <span id="btnTxt">Search Universities & Check Eligibility</span>
     </button>
   </div>
 
   <div id="resultsArea"></div>
 </div>
 
-<footer style="text-align:center;padding:1.5rem;font-size:12px;color:var(--mid);border-top:1px solid var(--border);background:var(--white)">
-  © 2025 TechAbroad by <strong>@yeahyeahassan</strong> &nbsp;·&nbsp; For EEE & CSE students &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; Always verify with official university websites
+<footer style="text-align:center;padding:1.25rem;font-size:11px;color:var(--mid);border-top:1px solid var(--border);background:var(--white)">
+  TechAbroad BD &nbsp;·&nbsp; by <strong>@yeahyeahassan</strong> &nbsp;·&nbsp; For Bangladeshi EEE & CSE students &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; Always verify on official university websites
 </footer>
 
 <script>
-function makeToggle(groupId, multi=true){
-  const grp = document.getElementById(groupId);
-  grp.querySelectorAll('.tog').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      if(!multi){grp.querySelectorAll('.tog').forEach(b=>{b.classList.remove('on','teal','blue')});btn.classList.add('on');return;}
-      btn.classList.toggle('on');
+function initToggle(id, multi){
+  document.getElementById(id).querySelectorAll('.tg').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(!multi){
+        document.getElementById(id).querySelectorAll('.tg').forEach(x=>x.classList.remove('on','g','t','b'));
+        b.classList.add('on');
+      } else {
+        b.classList.toggle('on');
+      }
     });
   });
 }
-makeToggle('deptGroup',false);
-makeToggle('levelGroup',false);
-makeToggle('countryGroup',true);
-makeToggle('fundGroup',true);
+initToggle('dg-dept',false);
+initToggle('dg-level',false);
+initToggle('dg-country',true);
+initToggle('dg-fund',true);
 
-function getSelected(groupId){
-  return [...document.querySelectorAll(`#${groupId} .tog.on`)].map(b=>b.dataset.val);
+function getSel(id){return[...document.querySelectorAll('#'+id+' .tg.on')].map(b=>b.dataset.v);}
+
+function calcEligPct(cgpa, ielts, minCgpa, minIelts){
+  const mc=parseFloat(minCgpa)||2.5;
+  const mi=parseFloat(minIelts)||6.0;
+  const cs=Math.min(100,Math.max(0,((cgpa-mc+0.5)/(4-mc+0.5))*100));
+  const is=Math.min(100,Math.max(0,((ielts-mi+0.5)/(9-mi+0.5))*100));
+  return Math.round((cs*0.6+is*0.4));
 }
 
-document.getElementById('searchBtn').addEventListener('click', async()=>{
-  const name = document.getElementById('f-name').value.trim()||'Student';
-  const cgpa = parseFloat(document.getElementById('f-cgpa').value)||0;
-  const ielts = parseFloat(document.getElementById('f-ielts').value)||0;
-  const gre = document.getElementById('f-gre').value.trim();
-  const status = document.getElementById('f-current').value;
-  const dept = getSelected('deptGroup')[0]||'EEE';
-  const level = getSelected('levelGroup')[0]||'Masters';
-  const countries = getSelected('countryGroup');
-  const funding = getSelected('fundGroup');
+document.getElementById('searchBtn').addEventListener('click',async()=>{
+  const name=document.getElementById('f-name').value.trim()||'Student';
+  const cgpa=parseFloat(document.getElementById('f-cgpa').value)||0;
+  const ielts=parseFloat(document.getElementById('f-ielts').value)||0;
+  const gre=document.getElementById('f-gre').value.trim();
+  const status=document.getElementById('f-status').value;
+  const homeUni=document.getElementById('f-homeuni').value;
+  const research=document.getElementById('f-research').value;
+  const dept=getSel('dg-dept')[0]||'EEE';
+  const level=getSel('dg-level')[0]||'Masters';
+  const countries=getSel('dg-country');
+  const funding=getSel('dg-fund');
 
-  if(cgpa===0||ielts===0){alert('Please enter your CGPA and IELTS score.');return;}
-  if(countries.length===0){alert('Please select at least one country.');return;}
+  if(!cgpa||!ielts){alert('Please enter CGPA and IELTS score.');return;}
+  if(!countries.length){alert('Please select at least one country.');return;}
 
   const btn=document.getElementById('searchBtn');
-  const btnTxt=document.getElementById('btnTxt');
   btn.disabled=true;
-  btnTxt.textContent='Checking eligibility...';
-
+  document.getElementById('btnTxt').textContent='Searching & checking eligibility…';
   const ra=document.getElementById('resultsArea');
-  ra.innerHTML=`<div class="spinner-wrap"><div class="spin"></div><div class="spin-txt">Analysing profile against ${countries.join(', ')} universities…</div></div>`;
+  ra.innerHTML='<div class="spinner-wrap"><div class="spin"></div><p style="color:var(--mid);font-size:13px">Matching your profile against real universities in '+countries.join(', ')+'…</p></div>';
 
-  const prompt=`You are a highly accurate international university admissions expert specialising in EEE (Electrical & Electronic Engineering) and CSE (Computer Science & Engineering) programmes at PUBLIC universities.
+  const countryList=countries.join(', ');
+  const isUK=countries.some(c=>c.includes('UK'));
+  const isUSA=countries.includes('USA');
 
-Student profile:
+  const prompt=`You are a world-class international university admissions expert for Bangladeshi engineering students. You have deep knowledge of UK, Scottish and USA PUBLIC universities.
+
+STUDENT PROFILE (Bangladeshi):
 - Name: ${name}
-- Department interest: ${dept}
-- Target degree: ${level}
+- Home university: ${homeUni}
+- Department: ${dept}
+- Target level: ${level}
 - CGPA: ${cgpa}/4.0
 - IELTS: ${ielts}
 - GRE/GMAT: ${gre||'Not provided'}
-- Current status: ${status}
-- Countries of interest: ${countries.join(', ')}
-- Funding preference: ${funding.join(', ')}
+- Academic status: ${status}
+- Research: ${research}
+- Countries wanted: ${countryList}
+- Funding: ${funding.join(', ')}
 
-Return ONLY a raw JSON array of exactly 8-10 real PUBLIC university recommendations. No markdown fences, no preamble. Each object must have EXACTLY these keys:
+Return ONLY a raw JSON array of 8 to 10 REAL public university recommendations. Zero markdown, zero prose, just raw JSON array.
 
+Each object MUST have ALL of these exact keys:
 {
-  "name": "Official university name",
-  "country": "one of: USA / UK / Germany / Australia / Malaysia / Japan / Saudi Arabia",
-  "city": "City name",
-  "flag": "single emoji flag",
-  "qs_rank": "QS world rank e.g. #201-250 or Top 50",
+  "name": "Full official name e.g. University of Manchester",
+  "country": "UK England / UK Scotland / USA / Germany / Australia / Malaysia / Japan / Saudi Arabia",
+  "city": "City",
+  "flag": "Flag emoji",
+  "region": "England / Scotland / state abbreviation for USA e.g. CA, TX",
+  "qs_rank": "QS world rank e.g. #45 or #201-250",
   "dept": "EEE or CSE or Both",
   "level": "${level}",
-  "programme": "Exact programme name e.g. MSc Electrical Engineering",
-  "intakes": ["Month Year", "Month Year"],
-  "deadline": "Application deadline e.g. Jan 15 / Rolling",
-  "min_cgpa": "e.g. 3.0 or 2.5 (UK 2:1)",
-  "min_ielts": "e.g. 6.5",
-  "gre_required": "Yes / No / Recommended",
-  "tuition": "Annual cost e.g. $12,000/yr or Free (Germany)",
-  "funding_type": "Fully Funded" or "Partially Funded" or "Self Funded",
-  "scholarship_name": "Real scholarship name e.g. DAAD, Chevening, Fulbright, King Abdullah, MEXT, UTM Scholarship etc.",
-  "scholarship_url": "https://real scholarship website",
+  "programme": "Exact programme name",
+  "intakes": ["Month YYYY","Month YYYY"],
+  "deadline": "e.g. 31 Jan / Rolling",
+  "min_cgpa": "e.g. 3.0 or 2.5",
+  "min_ielts": "e.g. 6.5 or 7.0",
+  "gre_req": "Required / Recommended / Not Required",
+  "tuition_annual": "e.g. £28,500/yr or $18,000/yr or Free",
+  "duration": "e.g. 1 year / 2 years / 4-5 years",
+  "funding_type": "Fully Funded or Partially Funded or Self Funded",
+  "scholarship_name": "Real scholarship e.g. Chevening, GREAT, Fulbright, NSF, Saltire etc.",
+  "scholarship_url": "https://real url",
   "eligibility_verdict": "Eligible" or "Likely Eligible" or "Check Requirements" or "Below Requirements",
-  "eligibility_reason": "One sentence explanation why",
-  "website": "https://official department page"
+  "eligibility_pct": number 0-100 based on cgpa ${cgpa} vs requirements and ielts ${ielts} vs requirements,
+  "eligibility_reason": "One sentence with specific numbers",
+  "documents_general": ["Official transcripts (attested)", "Passport copy", "Personal statement (500-1000 words)", "Two academic recommendation letters", "CV / Resume", "English proficiency certificate (IELTS)", "Proof of funding / bank statement", "Online application form"],
+  "documents_bd_specific": ["HSC / SSC certificate (Board attested)", "UIU/BUET/etc. degree certificate (attested by UGC Bangladesh)", "Equivalency certificate from UGC Bangladesh", "Police clearance certificate (Bangladesh)", "NOC from home university (if enrolled)", "Medicals / immigration health surcharge (UK)"],
+  "documents_level_specific": ["Research proposal (PhD)", "GRE scorecard", "Work experience letter (if any)", "Portfolio (if applicable)"],
+  "website": "https://official programme page"
 }
 
-Rules:
+CRITICAL RULES:
 - Only REAL existing public universities
-- Only genuine scholarship programmes
-- Eligibility verdict must be based on the student's actual CGPA ${cgpa} vs min_cgpa and IELTS ${ielts} vs min_ielts
-- Include both funded and partially funded options
-- Spread across the selected countries: ${countries.join(', ')}
-- Programmes must be EEE or CSE relevant
-- For Germany: many programmes are free — note that
-- For Saudi Arabia: include KFUPM, KAU
-- For Malaysia: include UTM, UM, UPM
-- For Japan: include MEXT scholarship options at public universities
-- For Australia: include Group of Eight universities
+- For UK Scotland: include University of Edinburgh, University of Glasgow, University of Strathclyde, Heriot-Watt, University of Aberdeen, University of Dundee, University of St Andrews, Robert Gordon University, University of Stirling
+- For UK England: include Russell Group and plate glass universities — UCL, Manchester, Sheffield, Leeds, Nottingham, Birmingham, Southampton, Newcastle, Bristol, Exeter, Sussex, Kent, Essex, Queen Mary, Loughborough, Bath, Reading, Surrey
+- For USA: include R1 research state universities — Texas A&M, Ohio State, Purdue, Penn State, Michigan State, University of Washington, Arizona State, UC Davis, University of Colorado, NC State, Virginia Tech, Iowa State, Oregon State, University of Minnesota, Rutgers
+- eligibility_pct must be a realistic number based on student's CGPA ${cgpa} vs min_cgpa and IELTS ${ielts} vs min_ielts
+- Spread across selected countries: ${countryList}
+- scholarship_name must be REAL (Chevening for UK, Saltire for Scotland, Fulbright/NSF/GRFP for USA, DAAD for Germany)
 `;
 
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
-    });
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
     const data=await res.json();
-    const raw=data.content?.filter(b=>b.type==='text').map(b=>b.text).join('')||'';
+    const raw=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
     let unis;
     try{unis=JSON.parse(raw.replace(/```json|```/g,'').trim());}
     catch(e){throw new Error('Could not parse results. Please try again.');}
-    if(!Array.isArray(unis)||unis.length===0)throw new Error('No results returned.');
-
-    const vc={
-      'Eligible':'b-elig-yes',
-      'Likely Eligible':'b-elig-yes',
-      'Check Requirements':'b-elig-check',
-      'Below Requirements':'b-elig-no'
-    };
-    const fc={
-      'Fully Funded':'b-funded',
-      'Partially Funded':'b-partial',
-      'Self Funded':'b-level'
-    };
+    if(!Array.isArray(unis)||!unis.length)throw new Error('No results returned. Please adjust filters and try again.');
 
     const eligible=unis.filter(u=>u.eligibility_verdict==='Eligible'||u.eligibility_verdict==='Likely Eligible').length;
+    const vc={'Eligible':'b-e','Likely Eligible':'b-le','Check Requirements':'b-ch','Below Requirements':'b-br'};
+    const fc={'Fully Funded':'b-ff','Partially Funded':'b-pf','Self Funded':'b-sf'};
 
     let html=`
-    <div class="elig-summary">
-      <div class="es-left">
-        <h3>Results for ${name}</h3>
-        <p>${unis.length} universities found · ${eligible} you are eligible/likely eligible for</p>
-      </div>
-      <div class="es-chips">
-        <div class="es-chip">${dept}</div>
-        <div class="es-chip">${level}</div>
-        <div class="es-chip">CGPA ${cgpa.toFixed(2)}</div>
-        <div class="es-chip">IELTS ${ielts.toFixed(1)}</div>
+    <div class="summary-bar">
+      <div class="sb-left"><h3>Results for ${name} — ${homeUni.split('–')[0].trim()}</h3><p>${unis.length} universities found · ${eligible} you are eligible or likely eligible for</p></div>
+      <div class="sb-chips">
+        <div class="sb-chip">CGPA ${cgpa.toFixed(2)}</div>
+        <div class="sb-chip">IELTS ${ielts.toFixed(1)}</div>
+        <div class="sb-chip">${dept}</div>
+        <div class="sb-chip">${level}</div>
       </div>
     </div>
-    <div class="ai-disclaimer">
+    <div class="notice amber">
       <i class="ti ti-info-circle" style="font-size:14px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
-      <span>Results generated by Claude AI using real university data. Eligibility is estimated based on your profile. Always verify current requirements directly on official university websites before applying.</span>
+      <span>AI-generated results using real university data. Eligibility is estimated. Always verify current requirements, intakes and document lists on the official university website before applying. Scholarship deadlines differ from admission deadlines.</span>
     </div>
-    <div class="results-bar">
-      <div>
-        <div class="res-title">${unis.length} Matching Universities</div>
-        <div class="res-sub">${countries.join(' · ')}</div>
-      </div>
-      <button onclick="document.getElementById('resultsArea').innerHTML='';document.getElementById('searchBtn').disabled=false;document.getElementById('btnTxt').textContent='Find Matching Universities'" style="font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-family:Sora,sans-serif;color:var(--mid)">Clear results</button>
+    <div class="results-header">
+      <div class="rh-left"><h3>${unis.length} Matching Universities</h3><p>${countryList} · ${dept} · ${level}</p></div>
+      <button class="clear-btn" onclick="document.getElementById('resultsArea').innerHTML='';document.getElementById('searchBtn').disabled=false;document.getElementById('btnTxt').textContent='Search Universities & Check Eligibility'"><i class="ti ti-x" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Clear</button>
     </div>`;
 
     unis.forEach((u,i)=>{
-      const eClass=vc[u.eligibility_verdict]||'b-elig-check';
-      const fClass=fc[u.funding_type]||'b-level';
+      const pct=Math.min(100,Math.max(0,u.eligibility_pct||calcEligPct(cgpa,ielts,u.min_cgpa,u.min_ielts)));
+      const barCls=pct>=70?'ef-green':pct>=45?'ef-amber':'ef-red';
+      const verdCls=pct>=70?'ev-green':pct>=45?'ev-amber':'ev-red';
       const cgpaMet=cgpa>=(parseFloat(u.min_cgpa)||0);
       const ieltsMet=ielts>=(parseFloat(u.min_ielts)||0);
-      const cpill=cgpaMet?'req-pill meet':'req-pill fail';
-      const ipill=ieltsMet?'req-pill meet':'req-pill fail';
+      const greMet=u.gre_req==='Not Required'?null:!!gre;
+      const eClass=vc[u.eligibility_verdict]||'b-ch';
+      const fClass=fc[u.funding_type]||'b-sf';
+
+      const generalDocs=(u.documents_general||[]).map(d=>`<div class="doc-item"><i class="ti ti-file-text" aria-hidden="true"></i><span>${d}</span></div>`).join('');
+      const bdDocs=(u.documents_bd_specific||[]).map(d=>`<div class="doc-item bd-specific"><i class="ti ti-flag" aria-hidden="true"></i><span>${d}</span></div>`).join('');
+      const lvlDocs=(u.documents_level_specific||[]).filter(d=>d&&!d.includes('N/A')).map(d=>`<div class="doc-item"><i class="ti ti-clipboard-list" aria-hidden="true"></i><span>${d}</span></div>`).join('');
 
       html+=`<div class="uni-card">
-        <div class="card-header">
-          <div class="flag-box">${u.flag||'🏫'}</div>
+        <div class="card-accent"></div>
+        <div class="card-top">
+          <div class="flag-box">${u.flag||'🏛'}</div>
           <div class="uni-meta">
             <div class="uni-name">${u.name}</div>
-            <div class="uni-loc"><i class="ti ti-map-pin" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> ${u.city}, ${u.country} &nbsp;·&nbsp; ${u.qs_rank}</div>
-            <div class="card-badges">
-              <span class="badge ${eClass}"><i class="ti ti-${u.eligibility_verdict==='Eligible'||u.eligibility_verdict==='Likely Eligible'?'circle-check':'alert-circle'}" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> ${u.eligibility_verdict}</span>
-              <span class="badge ${fClass}"><i class="ti ti-currency-dollar" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> ${u.funding_type}</span>
+            <div class="uni-sub"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i> ${u.city}, ${u.country} ${u.region?'('+u.region+')':''} &nbsp;·&nbsp; ${u.qs_rank}</div>
+            <div class="top-badges">
+              <span class="badge ${eClass}"><i class="ti ti-${pct>=70?'circle-check':pct>=45?'alert-circle':'circle-x'}" style="font-size:9px;vertical-align:-1px" aria-hidden="true"></i> ${u.eligibility_verdict}</span>
+              <span class="badge ${fClass}"><i class="ti ti-award" style="font-size:9px;vertical-align:-1px" aria-hidden="true"></i> ${u.funding_type}</span>
               <span class="badge b-dept">${u.dept}</span>
-              <span class="badge b-level">${u.level}</span>
+              <span class="badge b-lvl">${u.level}</span>
+              ${u.duration?'<span class="badge b-lvl"><i class="ti ti-clock" style="font-size:9px;vertical-align:-1px" aria-hidden="true"></i> '+u.duration+'</span>':''}
             </div>
           </div>
         </div>
+
+        <div class="elig-bar-wrap">
+          <div class="elig-bar-label">
+            <span>Eligibility Match</span>
+            <span>${pct}%</span>
+          </div>
+          <div class="elig-bar-track"><div class="elig-bar-fill ${barCls}" style="width:${pct}%"></div></div>
+          <div class="elig-verdict ${verdCls}">${u.eligibility_reason||u.eligibility_verdict}</div>
+        </div>
+
         <div class="card-grid">
-          <div class="cg-item"><div class="cg-key">Programme</div><div class="cg-val" style="font-size:12px">${u.programme}</div></div>
-          <div class="cg-item"><div class="cg-key">Tuition</div><div class="cg-val">${u.tuition}</div></div>
-          <div class="cg-item"><div class="cg-key">Deadline</div><div class="cg-val">${u.deadline}</div></div>
+          <div class="cg"><div class="cg-k">Programme</div><div class="cg-v" style="font-size:11px">${u.programme}</div></div>
+          <div class="cg"><div class="cg-k">Tuition</div><div class="cg-v">${u.tuition_annual}</div></div>
+          <div class="cg"><div class="cg-k">Deadline</div><div class="cg-v">${u.deadline}</div></div>
         </div>
+
         <div class="intakes-row">
-          <span class="intakes-label"><i class="ti ti-calendar" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Intakes:</span>
-          ${(u.intakes||[]).map(it=>`<span class="intake-chip">${it}</span>`).join('')}
+          <span class="ir-lbl"><i class="ti ti-calendar-event" style="font-size:11px;vertical-align:-1px" aria-hidden="true"></i> Intakes:</span>
+          ${(u.intakes||[]).map(it=>'<span class="i-chip">'+it+'</span>').join('')}
         </div>
-        <div class="reqs-row">
-          <span style="font-size:11px;color:var(--mid);font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Your scores:</span>
-          <span class="${cpill}">CGPA ${cgpa.toFixed(2)} (min ${u.min_cgpa})</span>
-          <span class="${ipill}">IELTS ${ielts.toFixed(1)} (min ${u.min_ielts})</span>
-          ${u.gre_required!=='No'?`<span class="req-pill">GRE ${u.gre_required}</span>`:''}
+
+        <div class="req-scores">
+          <span class="rs-lbl">Your scores:</span>
+          <span class="rp ${cgpaMet?'rp-meet':'rp-fail'}"><i class="ti ti-${cgpaMet?'check':'x'}" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> CGPA ${cgpa.toFixed(2)} (min ${u.min_cgpa})</span>
+          <span class="rp ${ieltsMet?'rp-meet':'rp-fail'}"><i class="ti ti-${ieltsMet?'check':'x'}" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> IELTS ${ielts.toFixed(1)} (min ${u.min_ielts})</span>
+          ${u.gre_req!=='Not Required'?'<span class="rp '+(gre?'rp-meet':'rp-warn')+'"><i class="ti ti-'+(gre?'check':'alert-circle')+'" style="font-size:10px;vertical-align:-1px" aria-hidden="true"></i> GRE '+u.gre_req+'</span>':''}
         </div>
+
+        <div class="docs-section">
+          <div class="docs-toggle" id="dt-${i}" onclick="(function(){var el=document.getElementById('dl-${i}');var tog=document.getElementById('dt-${i}');var open=el.style.display!=='none'&&el.style.display!=='';el.style.display=open?'none':'grid';tog.innerHTML=open?'<i class=\\'ti ti-chevron-down\\' style=\\'font-size:12px;vertical-align:-1px\\' aria-hidden=\\'true\\'></i> Show required documents (general + Bangladesh-specific)':'<i class=\\'ti ti-chevron-up\\' style=\\'font-size:12px;vertical-align:-1px\\' aria-hidden=\\'true\\'></i> Hide documents';})()">
+            <i class="ti ti-chevron-down" style="font-size:12px;vertical-align:-1px" aria-hidden="true"></i> Show required documents (general + Bangladesh-specific)
+          </div>
+          <div class="docs-list" id="dl-${i}" style="display:none">
+            ${generalDocs}${bdDocs}${lvlDocs}
+          </div>
+        </div>
+
         <div class="card-foot">
-          <div class="scholarship-note"><i class="ti ti-award" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i> ${u.scholarship_name||'Check university website'}</div>
+          <div class="schol-note"><i class="ti ti-rosette-discount" style="font-size:13px" aria-hidden="true"></i> ${u.scholarship_name||'Check university scholarships'}</div>
           <div class="card-actions">
-            <button class="btn-ask" onclick="sendPrompt('Tell me more about ${u.name.replace(/'/g,"\\'")} for ${u.level} ${u.dept} — scholarships, application process, and tips for Bangladeshi students')">Ask AI ↗</button>
-            ${u.website?`<a class="btn-visit" href="${u.website}" target="_blank">Visit <i class="ti ti-external-link" style="font-size:11px" aria-hidden="true"></i></a>`:''}
+            <button class="btn-ask" onclick="sendPrompt('Give me a full step-by-step application guide for ${u.name.replace(/'/g,"\\'")} for a Bangladeshi student applying to ${u.level} ${u.dept}. Include: visa process, scholarship application timeline, SOP tips, referee selection, and common mistakes Bangladeshi students make.')">Full guide ↗</button>
+            ${u.website?'<a class="btn-visit" href="'+u.website+'" target="_blank">Visit <i class="ti ti-external-link" style="font-size:10px" aria-hidden="true"></i></a>':''}
           </div>
         </div>
       </div>`;
     });
 
     ra.innerHTML=html;
+    setTimeout(()=>{
+      document.querySelectorAll('.elig-bar-fill').forEach(bar=>{
+        const w=bar.style.width;bar.style.width='0';
+        setTimeout(()=>{bar.style.width=w;},100);
+      });
+    },200);
+
   }catch(err){
-    ra.innerHTML=`<div class="err-box"><i class="ti ti-alert-triangle" style="font-size:14px;vertical-align:-2px;margin-right:6px" aria-hidden="true"></i>${err.message||'Something went wrong. Please try again.'}</div>`;
+    ra.innerHTML='<div class="notice red"><i class="ti ti-alert-triangle" style="font-size:14px;flex-shrink:0" aria-hidden="true"></i><span>'+( err.message||'Something went wrong. Please try again.')+'</span></div>';
   }finally{
     btn.disabled=false;
-    btnTxt.textContent='Find Matching Universities';
+    document.getElementById('btnTxt').textContent='Search Universities & Check Eligibility';
   }
 });
 </script>
